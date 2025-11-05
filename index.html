@@ -1,0 +1,1256 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Revisão Completa - Álgebra Linear</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        :root {
+            --primary: #3498db;
+            --secondary: #2c3e50;
+            --success: #27ae60;
+            --warning: #f39c12;
+            --danger: #e74c3c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .week-card {
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+        
+        .week-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+        
+        .week-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 15px;
+            cursor: pointer;
+        }
+        
+        .week-content {
+            padding: 20px;
+            background-color: white;
+        }
+        
+        .exercise {
+            border-left: 4px solid var(--primary);
+            padding: 15px;
+            margin: 15px 0;
+            background-color: #f8f9fa;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .solution {
+            background-color: #e8f4f8;
+            border-left: 4px solid var(--success);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .comment {
+            background-color: #fff3cd;
+            border-left: 4px solid var(--warning);
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 0 5px 5px 0;
+            font-style: italic;
+        }
+        
+        .summary-box {
+            background-color: #e8f4f8;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .key-concept {
+            background-color: #fff3cd;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            border-left: 4px solid var(--warning);
+        }
+        
+        .tool-item {
+            background-color: #f8f9fa;
+            padding: 10px 15px;
+            border-radius: 5px;
+            margin: 5px 0;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .checklist-item {
+            margin: 8px 0;
+        }
+        
+        .floating-menu {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .floating-btn {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            transition: all 0.3s;
+        }
+        
+        .floating-btn:hover {
+            transform: scale(1.1);
+            background-color: var(--secondary);
+        }
+        
+        .highlight {
+            background-color: rgba(255, 255, 0, 0.2);
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        
+        @media (max-width: 768px) {
+            .week-card {
+                margin-bottom: 15px;
+            }
+        }
+        
+        .matrix {
+            font-family: 'Courier New', monospace;
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+        }
+        
+        .formula {
+            background-color: #e8f4f8;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .pdf-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--danger);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .pdf-link:hover {
+            background-color: #c0392b;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        
+        .pdf-section {
+            background-color: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-calculator me-2"></i>Revisão Álgebra Linear
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#overview">Visão Geral</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#pdfs">PDFs das Semanas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#weeks">Conteúdo</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#resources">Recursos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="bg-light py-5">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-12">
+                    <h1 class="display-4 fw-bold text-primary">Revisão Completa de Álgebra Linear</h1>
+                    <p class="lead">Resumos esquemáticos, exercícios resolvidos e ferramentas para dominar todos os conceitos das 7 semanas</p>
+                    <div class="d-flex flex-wrap gap-2 mt-4">
+                        <span class="badge bg-primary">7 Semanas</span>
+                        <span class="badge bg-success">50+ Exercícios</span>
+                        <span class="badge bg-warning">Resumos Visuais</span>
+                        <span class="badge bg-info">Ferramentas Práticas</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Overview Section -->
+    <section id="overview" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Plano de Estudos em 7 Semanas</h2>
+            
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-list-check me-2 text-primary"></i>Checklist de Revisão</h5>
+                            <div class="checklist-item">
+                                <input class="form-check-input" type="checkbox" id="check1">
+                                <label class="form-check-label ms-2" for="check1">Revisar conceitos fundamentais de cada semana</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input class="form-check-input" type="checkbox" id="check2">
+                                <label class="form-check-label ms-2" for="check2">Resolver exercícios propostos</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input class="form-check-input" type="checkbox" id="check3">
+                                <label class="form-check-label ms-2" for="check3">Praticar com softwares (GeoGebra, Octave, Python)</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input class="form-check-input" type="checkbox" id="check4">
+                                <label class="form-check-label ms-2" for="check4">Revisar aplicações práticas</label>
+                            </div>
+                            <div class="checklist-item">
+                                <input class="form-check-input" type="checkbox" id="check5">
+                                <label class="form-check-label ms-2" for="check5">Fazer autoavaliação com questões mistas</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-lightbulb me-2 text-warning"></i>Dicas para Revisão Eficiente</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">Dedique pelo menos <span class="highlight">1-2 horas por dia</span> para revisão</li>
+                                <li class="list-group-item">Foque nos <span class="highlight">conceitos-chave</span> de cada semana</li>
+                                <li class="list-group-item">Use <span class="highlight">visualizações</span> para entender transformações</li>
+                                <li class="list-group-item">Pratique com <span class="highlight">exercícios variados</span></li>
+                                <li class="list-group-item">Revise <span class="highlight">semanalmente</span> os tópicos anteriores</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PDFs Section -->
+    <section id="pdfs" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">PDFs das Semanas</h2>
+            <p class="text-center mb-4">Acesse os materiais completos de cada semana em formato PDF</p>
+            
+            <div class="pdf-section">
+                <div class="row">
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-file-pdf me-2 text-danger"></i>Semana 1</h5>
+                                <p class="card-text">Operações com Matrizes: Conceitos básicos, tipos de matrizes, operações e propriedades.</p>
+                                <a href="MAT500_apostila_semana1.pdf" target="_blank" class="pdf-link">
+                                    <i class="fas fa-download"></i> Baixar PDF
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-file-pdf me-2 text-danger"></i>Semana 2</h5>
+                                <p class="card-text">Determinantes de Matrizes: Cálculo, propriedades, regra de Cramer e aplicações.</p>
+                                <a href="MAT500_apostila_semana2.pdf" target="_blank" class="pdf-link">
+                                    <i class="fas fa-download"></i> Baixar PDF
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-file-pdf me-2 text-danger"></i>Semana 3</h5>
+                                <p class="card-text">Resolução de Sistemas Lineares: Métodos de resolução, classificação e aplicações.</p>
+                                <a href="MAT500_apostila_semana3.pdf" target="_blank" class="pdf-link">
+                                    <i class="fas fa-download"></i> Baixar PDF
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-file-pdf me-2 text-danger"></i>Semana 4</h5>
+                                <p class="card-text">Espaços Vetoriais e Subespaços: Definição, propriedades, base e dimensão.</p>
+                                <a href="MAT500_apostila_semana4.pdf" target="_blank" class="pdf-link">
+                                    <i class="fas fa-download"></i> Baixar PDF
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-file-pdf me-2 text-danger"></i>Semana 5</h5>
+                                <p class="card-text">Transformações Lineares: Definição, núcleo, imagem e aplicações.</p>
+                                <a href="MAT500_apostila_semana5.pdf" target="_blank" class="pdf-link">
+                                    <i class="fas fa-download"></i> Baixar PDF
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-file-pdf me-2 text-danger"></i>Semana 6</h5>
+                                <p class="card-text">Autovalores e Autovetores: Cálculo, diagonalização e aplicações.</p>
+                                <a href="MAT500_apostila_semana6.pdf" target="_blank" class="pdf-link">
+                                    <i class="fas fa-download"></i> Baixar PDF
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-4 mx-auto">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-file-pdf me-2 text-danger"></i>Semana 7</h5>
+                                <p class="card-text">Aplicações Avançadas: Movimentos 3D, reconstrução de equações e casos práticos.</p>
+                                <a href="MAT500_apostila_semana7.pdf" target="_blank" class="pdf-link">
+                                    <i class="fas fa-download"></i> Baixar PDF
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Weeks Content -->
+    <section id="weeks" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Conteúdo das 7 Semanas</h2>
+            
+            <!-- Week 1 -->
+            <div class="week-card">
+                <div class="week-header" data-bs-toggle="collapse" data-bs-target="#week1">
+                    <h3 class="mb-0">Semana 1: Operações com Matrizes</h3>
+                </div>
+                <div id="week1" class="collapse show">
+                    <div class="week-content">
+                        <div class="summary-box">
+                            <h5><i class="fas fa-sitemap me-2"></i>Resumo Esquemático</h5>
+                            <ul>
+                                <li><strong>Conceitos Básicos:</strong> Definição, notação, dimensão</li>
+                                <li><strong>Tipos de Matrizes:</strong> Quadrada, diagonal, identidade, nula, transposta</li>
+                                <li><strong>Operações:</strong> Adição, multiplicação por escalar, multiplicação de matrizes</li>
+                                <li><strong>Propriedades:</strong> Associativa, distributiva, NÃO comutativa</li>
+                                <li><strong>Matriz Inversa:</strong> Definição, métodos de cálculo</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="key-concept">
+                            <h6><i class="fas fa-star me-2"></i>Conceito-Chave: Multiplicação de Matrizes</h6>
+                            <p>Só é possível se o número de colunas da primeira matriz for igual ao número de linhas da segunda. O resultado terá o número de linhas da primeira e colunas da segunda.</p>
+                        </div>
+                        
+                        <h5 class="mt-4">Exercícios Resolvidos</h5>
+                        
+                        <div class="exercise">
+                            <h6>Exercício 1: Operações Básicas</h6>
+                            <p>Dadas as matrizes \( A = \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix} \) e \( B = \begin{bmatrix} 5 & 6 \\ 7 & 8 \end{bmatrix} \), calcule A + B e 3A.</p>
+                            
+                            <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#sol1">
+                                Ver Solução
+                            </button>
+                            
+                            <div class="collapse mt-3" id="sol1">
+                                <div class="solution">
+                                    <p><strong>Solução:</strong></p>
+                                    <p>\( A + B = \begin{bmatrix} 1+5 & 2+6 \\ 3+7 & 4+8 \end{bmatrix} = \begin{bmatrix} 6 & 8 \\ 10 & 12 \end{bmatrix} \)</p>
+                                    <p>\( 3A = \begin{bmatrix} 3×1 & 3×2 \\ 3×3 & 3×4 \end{bmatrix} = \begin{bmatrix} 3 & 6 \\ 9 & 12 \end{bmatrix} \)</p>
+                                </div>
+                                <div class="comment">
+                                    <strong>Comentário:</strong> Adição elemento a elemento; multiplicação por escalar multiplica cada elemento.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="exercise">
+                            <h6>Exercício 2: Multiplicação de Matrizes</h6>
+                            <p>Dadas \( A = \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix} \) e \( B = \begin{bmatrix} 2 \\ 1 \end{bmatrix} \), calcule AB.</p>
+                            
+                            <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#sol2">
+                                Ver Solução
+                            </button>
+                            
+                            <div class="collapse mt-3" id="sol2">
+                                <div class="solution">
+                                    <p><strong>Solução:</strong></p>
+                                    <p>\( AB = \begin{bmatrix} 1×2 + 2×1 \\ 3×2 + 4×1 \end{bmatrix} = \begin{bmatrix} 4 \\ 10 \end{bmatrix} \)</p>
+                                </div>
+                                <div class="comment">
+                                    <strong>Comentário:</strong> Nº colunas de A (2) = nº linhas de B (2). Resultado: matriz 2×1.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="exercise">
+                            <h6>Exercício 3: Matriz Inversa (2×2)</h6>
+                            <p>Encontre a inversa de \( A = \begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix} \).</p>
+                            
+                            <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#sol3">
+                                Ver Solução
+                            </button>
+                            
+                            <div class="collapse mt-3" id="sol3">
+                                <div class="solution">
+                                    <p><strong>Solução:</strong></p>
+                                    <p>\( det(A) = 1×4 - 2×3 = -2 \)</p>
+                                    <p>\( A^{-1} = \frac{1}{-2} \begin{bmatrix} 4 & -2 \\ -3 & 1 \end{bmatrix} = \begin{bmatrix} -2 & 1 \\ 3/2 & -1/2 \end{bmatrix} \)</p>
+                                </div>
+                                <div class="comment">
+                                    <strong>Comentário:</strong> Só existe inversa se det ≠ 0. Verifique: AA⁻¹ = I.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h6><i class="fas fa-tasks me-2"></i>Exercícios para Praticar</h6>
+                            <ol>
+                                <li>Calcule a transposta de \( \begin{bmatrix} 2 & 5 & 1 \\ 0 & 3 & 7 \end{bmatrix} \)</li>
+                                <li>Multiplique \( \begin{bmatrix} 1 & 0 & 2 \\ 3 & 1 & 4 \end{bmatrix} \) por \( \begin{bmatrix} 2 & 1 \\ 0 & 3 \\ 1 & 2 \end{bmatrix} \)</li>
+                                <li>Verifique se \( \begin{bmatrix} 2 & 1 \\ 1 & 1 \end{bmatrix} \) e \( \begin{bmatrix} 1 & -1 \\ -1 & 2 \end{bmatrix} \) são inversas</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Week 2 -->
+            <div class="week-card">
+                <div class="week-header" data-bs-toggle="collapse" data-bs-target="#week2">
+                    <h3 class="mb-0">Semana 2: Determinantes</h3>
+                </div>
+                <div id="week2" class="collapse">
+                    <div class="week-content">
+                        <div class="summary-box">
+                            <h5><i class="fas fa-sitemap me-2"></i>Resumo Esquemático</h5>
+                            <ul>
+                                <li><strong>Conceito:</strong> Número real associado a matriz quadrada</li>
+                                <li><strong>Cálculo:</strong> 2×2 (ad-bc), 3×3 (Regra de Sarrus), n×n (Expansão por cofatores)</li>
+                                <li><strong>Propriedades:</strong> det(AB)=det(A)det(B), det(Aᵀ)=det(A), troca de linhas muda sinal</li>
+                                <li><strong>Método da Matriz Adjunta:</strong> Técnica para calcular inversas usando determinantes e cofatores</li>
+                                <li><strong>Aplicações:</strong> Inversibilidade (det≠0), Regra de Cramer, área/volume geométrico</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="key-concept">
+                            <h6><i class="fas fa-star me-2"></i>Conceito-Chave: Regra de Sarrus</h6>
+                            <p>Método prático para calcular determinantes 3×3. Repetem-se as duas primeiras colunas à direita e somam-se os produtos das diagonais principais, subtraindo os produtos das diagonais secundárias.</p>
+                        </div>
+
+                        <div class="key-concept">
+                            <h6><i class="fas fa-star me-2"></i>Conceito-Chave: Método da Matriz Adjunta</h6>
+                            <p>Para uma matriz A 3×3, a inversa é dada por \( A^{-1} = \frac{1}{\det(A)} \cdot \operatorname{adj}(A) \), onde a matriz adjunta é a transposta da matriz de cofatores. Cada cofator \( C_{ij} = (-1)^{i+j} \cdot \det(M_{ij}) \), onde \( M_{ij} \) é a submatriz obtida removendo a linha i e coluna j de A.</p>
+                        </div>
+                        
+                        <h5 class="mt-4">Exercícios Resolvidos</h5>
+                        
+                        <div class="exercise">
+                            <h6>Exercício 1: Determinante 2×2</h6>
+                            <p>Calcule \( det\begin{bmatrix} 2 & 3 \\ 1 & 4 \end{bmatrix} \).</p>
+                            
+                            <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#sol2-1">
+                                Ver Solução
+                            </button>
+                            
+                            <div class="collapse mt-3" id="sol2-1">
+                                <div class="solution">
+                                    <p><strong>Solução:</strong></p>
+                                    <p>\( det = 2×4 - 3×1 = 8 - 3 = 5 \)</p>
+                                </div>
+                                <div class="comment">
+                                    <strong>Comentário:</strong> Diagonal principal menos diagonal secundária.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="exercise">
+                            <h6>Exercício 2: Regra de Sarrus (3×3)</h6>
+                            <p>Calcule \( det\begin{bmatrix} 2 & 1 & 3 \\ 0 & 4 & 1 \\ 1 & 2 & 5 \end{bmatrix} \).</p>
+                            
+                            <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#sol2-2">
+                                Ver Solução
+                            </button>
+                            
+                            <div class="collapse mt-3" id="sol2-2">
+                                <div class="solution">
+                                    <p><strong>Solução:</strong></p>
+                                    <p>Repetir duas primeiras colunas:</p>
+                                    <p>\( \begin{bmatrix} 2 & 1 & 3 & 2 & 1 \\ 0 & 4 & 1 & 0 & 4 \\ 1 & 2 & 5 & 1 & 2 \end{bmatrix} \)</p>
+                                    <p>Diagonais principais: (2×4×5) + (1×1×1) + (3×0×2) = 40 + 1 + 0 = 41</p>
+                                    <p>Diagonais secundárias: (3×4×1) + (2×1×2) + (1×0×5) = 12 + 4 + 0 = 16</p>
+                                    <p>det = 41 - 16 = 25</p>
+                                </div>
+                                <div class="comment">
+                                    <strong>Comentário:</strong> Só funciona para 3×3. Para ordens maiores, use cofatores.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="exercise">
+                            <h6>Exercício 3: Regra de Cramer</h6>
+                            <p>Resolva \( \begin{cases} 2x + 3y = 12 \\ 4x - y = 5 \end{cases} \).</p>
+                            
+                            <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#sol2-3">
+                                Ver Solução
+                            </button>
+                            
+                            <div class="collapse mt-3" id="sol2-3">
+                                <div class="solution">
+                                    <p><strong>Solução:</strong></p>
+                                    <p>\( det(A) = \begin{vmatrix} 2 & 3 \\ 4 & -1 \end{vmatrix} = 2×(-1) - 3×4 = -14 \)</p>
+                                    <p>\( det(A_x) = \begin{vmatrix} 12 & 3 \\ 5 & -1 \end{vmatrix} = 12×(-1) - 3×5 = -27 \)</p>
+                                    <p>\( det(A_y) = \begin{vmatrix} 2 & 12 \\ 4 & 5 \end{vmatrix} = 2×5 - 12×4 = -38 \)</p>
+                                    <p>\( x = \frac{-27}{-14} = \frac{27}{14}, \quad y = \frac{-38}{-14} = \frac{19}{7} \)</p>
+                                </div>
+                                <div class="comment">
+                                    <strong>Comentário:</strong> Só funciona para sistemas n×n com det(A) ≠ 0.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="exercise">
+                            <h6>Exercício 4: Método da Matriz Adjunta para Inversão 3×3</h6>
+                            <p>Encontre a inversa da matriz \( B = \begin{bmatrix} 1 & 1 & 1 \\ 2 & 3 & 4 \\ 4 & 9 & 16 \end{bmatrix} \) usando o método da matriz adjunta.</p>
+                            
+                            <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#sol2-4">
+                                Ver Solução
+                            </button>
+                            
+                            <div class="collapse mt-3" id="sol2-4">
+                                <div class="solution">
+                                    <p><strong>Solução:</strong></p>
+                                    
+                                    <p><strong>Passo 1: Cálculo do Determinante (Regra de Sarrus)</strong></p>
+                                    <p>Duplicando as duas primeiras colunas:</p>
+                                    <div class="matrix">
+                                        \( \begin{bmatrix} 1 & 1 & 1 & | & 1 & 1 \\ 2 & 3 & 4 & | & 2 & 3 \\ 4 & 9 & 16 & | & 4 & 9 \end{bmatrix} \)
+                                    </div>
+                                    <p><strong>Diagonais principais:</strong> (1×3×16) + (1×4×4) + (1×2×9) = 48 + 16 + 18 = 82</p>
+                                    <p><strong>Diagonais secundárias:</strong> (1×3×4) + (1×4×9) + (1×2×16) = 12 + 36 + 32 = 80</p>
+                                    <p>\( \det(B) = 82 - 80 = 2 \)</p>
+                                    <p>Como \( \det(B) = 2 \neq 0 \), a matriz é invertível.</p>
+                                    
+                                    <p><strong>Passo 2: Matriz de Cofatores</strong></p>
+                                    <p>Cada cofator \( C_{ij} = (-1)^{i+j} \cdot \det(M_{ij}) \), onde \( M_{ij} \) é a submatriz sem linha i e coluna j.</p>
+                                    
+                                    <p><strong>Cálculo dos cofatores:</strong></p>
+                                    <ul>
+                                        <li>\( C_{11} = (-1)^{1+1} \det\begin{bmatrix} 3 & 4 \\ 9 & 16 \end{bmatrix} = 1 \cdot (48-36) = 12 \)</li>
+                                        <li>\( C_{12} = (-1)^{1+2} \det\begin{bmatrix} 2 & 4 \\ 4 & 16 \end{bmatrix} = -1 \cdot (32-16) = -16 \)</li>
+                                        <li>\( C_{13} = (-1)^{1+3} \det\begin{bmatrix} 2 & 3 \\ 4 & 9 \end{bmatrix} = 1 \cdot (18-12) = 6 \)</li>
+                                        <li>\( C_{21} = (-1)^{2+1} \det\begin{bmatrix} 1 & 1 \\ 9 & 16 \end{bmatrix} = -1 \cdot (16-9) = -7 \)</li>
+                                        <li>\( C_{22} = (-1)^{2+2} \det\begin{bmatrix} 1 & 1 \\ 4 & 16 \end{bmatrix} = 1 \cdot (16-4) = 12 \)</li>
+                                        <li>\( C_{23} = (-1)^{2+3} \det\begin{bmatrix} 1 & 1 \\ 4 & 9 \end{bmatrix} = -1 \cdot (9-4) = -5 \)</li>
+                                        <li>\( C_{31} = (-1)^{3+1} \det\begin{bmatrix} 1 & 1 \\ 3 & 4 \end{bmatrix} = 1 \cdot (4-3) = 1 \)</li>
+                                        <li>\( C_{32} = (-1)^{3+2} \det\begin{bmatrix} 1 & 1 \\ 2 & 4 \end{bmatrix} = -1 \cdot (4-2) = -2 \)</li>
+                                        <li>\( C_{33} = (-1)^{3+3} \det\begin{bmatrix} 1 & 1 \\ 2 & 3 \end{bmatrix} = 1 \cdot (3-2) = 1 \)</li>
+                                    </ul>
+                                    <p>Matriz de cofatores: \( C = \begin{bmatrix} 12 & -16 & 6 \\ -7 & 12 & -5 \\ 1 & -2 & 1 \end{bmatrix} \)</p>
+                                    
+                                    <p><strong>Passo 3: Matriz Adjunta</strong></p>
+                                    <p>\( \operatorname{adj}(B) = C^T = \begin{bmatrix} 12 & -7 & 1 \\ -16 & 12 & -2 \\ 6 & -5 & 1 \end{bmatrix} \)</p>
+                                    
+                                    <p><strong>Passo 4: Matriz Inversa</strong></p>
+                                    <p>\( B^{-1} = \frac{1}{\det(B)} \cdot \operatorname{adj}(B) = \frac{1}{2} \begin{bmatrix} 12 & -7 & 1 \\ -16 & 12 & -2 \\ 6 & -5 & 1 \end{bmatrix} = \begin{bmatrix} 6 & -7/2 & 1/2 \\ -8 & 6 & -1 \\ 3 & -5/2 & 1/2 \end{bmatrix} \)</p>
+                                </div>
+                                <div class="comment">
+                                    <strong>Comentário:</strong> O método da matriz adjunta é eficaz para matrizes 3×3, embora requerra cuidado nos cálculos. A visualização riscando linhas e colunas ajuda a identificar as submatrizes necessárias para cada cofator.
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="exercise">
+                            <h6>Exercício 5: Segundo Exemplo de Matriz Adjunta</h6>
+                            <p>Encontre a inversa da matriz \( B = \begin{bmatrix} 1 & 2 & 3 \\ 2 & 5 & 3 \\ 1 & 0 & 8 \end{bmatrix} \) usando o método da matriz adjunta.</p>
+                            
+                            <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#sol2-5">
+                                Ver Solução
+                            </button>
+                            
+                            <div class="collapse mt-3" id="sol2-5">
+                                <div class="solution">
+                                    <p><strong>Solução:</strong></p>
+                                    
+                                    <p><strong>Passo 1: Cálculo do Determinante (Regra de Sarrus)</strong></p>
+                                    <p>Duplicando as duas primeiras colunas:</p>
+                                    <div class="matrix">
+                                        \( \begin{bmatrix} 1 & 2 & 3 & | & 1 & 2 \\ 2 & 5 & 3 & | & 2 & 5 \\ 1 & 0 & 8 & | & 1 & 0 \end{bmatrix} \)
+                                    </div>
+                                    <p><strong>Diagonais principais:</strong> (1×5×8) + (2×3×1) + (3×2×0) = 40 + 6 + 0 = 46</p>
+                                    <p><strong>Diagonais secundárias:</strong> (3×5×1) + (1×3×0) + (2×2×8) = 15 + 0 + 32 = 47</p>
+                                    <p>\( \det(B) = 46 - 47 = -1 \)</p>
+                                    
+                                    <p><strong>Passo 2: Matriz de Cofatores</strong></p>
+                                    <ul>
+                                        <li>\( C_{11} = (-1)^{1+1} \det\begin{bmatrix} 5 & 3 \\ 0 & 8 \end{bmatrix} = 1 \cdot (40-0) = 40 \)</li>
+                                        <li>\( C_{12} = (-1)^{1+2} \det\begin{bmatrix} 2 & 3 \\ 1 & 8 \end{bmatrix} = -1 \cdot (16-3) = -13 \)</li>
+                                        <li>\( C_{13} = (-1)^{1+3} \det\begin{bmatrix} 2 & 5 \\ 1 & 0 \end{bmatrix} = 1 \cdot (0-5) = -5 \)</li>
+                                        <li>\( C_{21} = (-1)^{2+1} \det\begin{bmatrix} 2 & 3 \\ 0 & 8 \end{bmatrix} = -1 \cdot (16-0) = -16 \)</li>
+                                        <li>\( C_{22} = (-1)^{2+2} \det\begin{bmatrix} 1 & 3 \\ 1 & 8 \end{bmatrix} = 1 \cdot (8-3) = 5 \)</li>
+                                        <li>\( C_{23} = (-1)^{2+3} \det\begin{bmatrix} 1 & 2 \\ 1 & 0 \end{bmatrix} = -1 \cdot (0-2) = 2 \)</li>
+                                        <li>\( C_{31} = (-1)^{3+1} \det\begin{bmatrix} 2 & 3 \\ 5 & 3 \end{bmatrix} = 1 \cdot (6-15) = -9 \)</li>
+                                        <li>\( C_{32} = (-1)^{3+2} \det\begin{bmatrix} 1 & 3 \\ 2 & 3 \end{bmatrix} = -1 \cdot (3-6) = 3 \)</li>
+                                        <li>\( C_{33} = (-1)^{3+3} \det\begin{bmatrix} 1 & 2 \\ 2 & 5 \end{bmatrix} = 1 \cdot (5-4) = 1 \)</li>
+                                    </ul>
+                                    <p>Matriz de cofatores: \( C = \begin{bmatrix} 40 & -13 & -5 \\ -16 & 5 & 2 \\ -9 & 3 & 1 \end{bmatrix} \)</p>
+                                    
+                                    <p><strong>Passo 3: Matriz Adjunta</strong></p>
+                                    <p>\( \operatorname{adj}(B) = C^T = \begin{bmatrix} 40 & -16 & -9 \\ -13 & 5 & 3 \\ -5 & 2 & 1 \end{bmatrix} \)</p>
+                                    
+                                    <p><strong>Passo 4: Matriz Inversa</strong></p>
+                                    <p>\( B^{-1} = \frac{1}{\det(B)} \cdot \operatorname{adj}(B) = \frac{1}{-1} \begin{bmatrix} 40 & -16 & -9 \\ -13 & 5 & 3 \\ -5 & 2 & 1 \end{bmatrix} = \begin{bmatrix} -40 & 16 & 9 \\ 13 & -5 & -3 \\ 5 & -2 & -1 \end{bmatrix} \)</p>
+                                </div>
+                                <div class="comment">
+                                    <strong>Comentário:</strong> Note que quando o determinante é negativo, todos os elementos da inversa terão sinais trocados em relação à matriz adjunta.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h6><i class="fas fa-tasks me-2"></i>Exercícios para Praticar</h6>
+                            <ol>
+                                <li>Calcule o determinante de \( \begin{bmatrix} 3 & 7 \\ 1 & 4 \end{bmatrix} \)</li>
+                                <li>Use a Regra de Sarrus para \( \begin{bmatrix} 1 & 2 & 1 \\ 0 & 3 & 2 \\ 1 & 1 & 1 \end{bmatrix} \)</li>
+                                <li>Resolva usando Cramer: \( \begin{cases} 3x - 2y = 7 \\ x + y = 5 \end{cases} \)</li>
+                                <li>Encontre a inversa de \( \begin{bmatrix} 2 & 1 & 1 \\ 1 & 2 & 1 \\ 1 & 1 & 2 \end{bmatrix} \) usando o método da matriz adjunta</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Week 3 -->
+            <div class="week-card">
+                <div class="week-header" data-bs-toggle="collapse" data-bs-target="#week3">
+                    <h3 class="mb-0">Semana 3: Sistemas Lineares</h3>
+                </div>
+                <div id="week3" class="collapse">
+                    <div class="week-content">
+                        <div class="summary-box">
+                            <h5><i class="fas fa-sitemap me-2"></i>Resumo Esquemático</h5>
+                            <ul>
+                                <li><strong>Conceitos:</strong> Forma geral, representação matricial (Ax=b), matriz aumentada [A|b]</li>
+                                <li><strong>Classificação:</strong> Possível determinado, possível indeterminado, impossível</li>
+                                <li><strong>Métodos de Resolução:</strong> Eliminação de Gauss, Gauss-Jordan, substituição retroativa</li>
+                                <li><strong>Sistemas Homogêneos:</strong> Ax=0, sempre tem solução trivial</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="key-concept">
+                            <h6><i class="fas fa-star me-2"></i>Conceito-Chave: Eliminação de Gauss</h6>
+                            <p>Transforma o sistema em forma escalonada usando operações elementares: troca de linhas, multiplicação por escalar, adição de múltiplo de uma linha a outra.</p>
+                        </div>
+                        
+                        <h5 class="mt-4">Exercícios Resolvidos</h5>
+                        
+                        <div class="exercise">
+                            <h6>Exercício 1: Eliminação de Gauss</h6>
+                            <p>Resolva \( \begin{cases} x + 2y + z = 8 \\ 2x + y - z = 1 \\ x - y + z = 2 \end{cases} \).</p>
+                            
+                            <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#sol3-1">
+                                Ver Solução
+                            </button>
+                            
+                            <div class="collapse mt-3" id="sol3-1">
+                                <div class="solution">
+                                    <p><strong>Solução:</strong></p>
+                                    <p>Matriz aumentada:</p>
+                                    <p>\( \left[\begin{array}{ccc|c} 1 & 2 & 1 & 8 \\ 2 & 1 & -1 & 1 \\ 1 & -1 & 1 & 2 \end{array}\right] \)</p>
+                                    <p>L₂ ← L₂ - 2L₁, L₃ ← L₃ - L₁:</p>
+                                    <p>\( \left[\begin{array}{ccc|c} 1 & 2 & 1 & 8 \\ 0 & -3 & -3 & -15 \\ 0 & -3 & 0 & -6 \end{array}\right] \)</p>
+                                    <p>L₃ ← L₃ - L₂:</p>
+                                    <p>\( \left[\begin{array}{ccc|c} 1 & 2 & 1 & 8 \\ 0 & -3 & -3 & -15 \\ 0 & 0 & 3 & 9 \end{array}\right] \)</p>
+                                    <p>Substituição retroativa: z = 3, y = 2, x = 1</p>
+                                </div>
+                                <div class="comment">
+                                    <strong>Comentário:</strong> O objetivo é formar matriz triangular superior.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="exercise">
+                            <h6>Exercício 2: Classificação</h6>
+                            <p>Classifique \( \begin{cases} x + 2y = 3 \\ 2x + 4y = 6 \end{cases} \).</p>
+                            
+                            <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#sol3-2">
+                                Ver Solução
+                            </button>
+                            
+                            <div class="collapse mt-3" id="sol3-2">
+                                <div class="solution">
+                                    <p><strong>Solução:</strong></p>
+                                    <p>A segunda equação é o dobro da primeira → <strong>Sistema possível indeterminado</strong></p>
+                                    <p>\( S = \{(x,y) | x + 2y = 3\} \)</p>
+                                </div>
+                                <div class="comment">
+                                    <strong>Comentário:</strong> Linhas proporcionais indicam dependência linear.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h6><i class="fas fa-tasks me-2"></i>Exercícios para Praticar</h6>
+                            <ol>
+                                <li>Resolva por eliminação de Gauss: \( \begin{cases} 2x + y - z = 3 \\ x - y + z = 0 \\ 3x + 2y = 5 \end{cases} \)</li>
+                                <li>Classifique: \( \begin{cases} x + y + z = 1 \\ 2x + 2y + 2z = 2 \\ 3x + 3y + 3z = 3 \end{cases} \)</li>
+                                <li>Resolva o sistema homogêneo: \( \begin{cases} x + 2y - z = 0 \\ 2x + 4y - 2z = 0 \end{cases} \)</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Week 4 -->
+            <div class="week-card">
+                <div class="week-header" data-bs-toggle="collapse" data-bs-target="#week4">
+                    <h3 class="mb-0">Semana 4: Espaços Vetoriais</h3>
+                </div>
+                <div id="week4" class="collapse">
+                    <div class="week-content">
+                        <div class="summary-box">
+                            <h5><i class="fas fa-sitemap me-2"></i>Resumo Esquemático</h5>
+                            <ul>
+                                <li><strong>Definição:</strong> Conjunto V com + e × por escalar, satisfaz 10 axiomas</li>
+                                <li><strong>Exemplos:</strong> ℝ², ℝ³, polinômios, matrizes</li>
+                                <li><strong>Subespaços:</strong> W ⊆ V é subespaço se fechado para adição e multiplicação por escalar</li>
+                                <li><strong>Base e Dimensão:</strong> Base = vetores LI que geram V, dimensão = nº vetores na base</li>
+                                <li><strong>Conceitos Chave:</strong> Combinação linear, independência linear, conjunto gerador</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="key-concept">
+                            <h6><i class="fas fa-star me-2"></i>Conceito-Chave: Independência Linear</h6>
+                            <p>Um conjunto de vetores é linearmente independente se a única combinação linear que resulta no vetor nulo é a trivial (todos os coeficientes zero).</p>
+                        </div>
+                        
+                        <h5 class="mt-4">Exercícios Resolvidos</h5>
+                        
+                        <div class="exercise">
+                            <h6>Exercício 1: Verificação de Subespaço</h6>
+                            <p>Verifique se W = {(x,y) ∈ ℝ² | x = y} é subespaço.</p>
+                            
+                            <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#sol4-1">
+                                Ver Solução
+                            </button>
+                            
+                            <div class="collapse mt-3" id="sol4-1">
+                                <div class="solution">
+                                    <p><strong>Solução:</strong></p>
+                                    <p><strong>Fechamento para adição:</strong> (x₁,x₁) + (x₂,x₂) = (x₁+x₂, x₁+x₂) ∈ W ✓</p>
+                                    <p><strong>Fechamento para multiplicação:</strong> k(x,x) = (kx,kx) ∈ W ✓</p>
+                                    <p><strong>∴ W é subespaço</strong></p>
+                                </div>
+                                <div class="comment">
+                                    <strong>Comentário:</strong> Todo subespaço deve conter o vetor nulo (0,0).
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="exercise">
+                            <h6>Exercício 2: Base e Dimensão</h6>
+                            <p>Encontre base e dimensão de V = {(x,y,z) ∈ ℝ³ | x + y + z = 0}.</p>
+                            
+                            <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#sol4-2">
+                                Ver Solução
+                            </button>
+                            
+                            <div class="collapse mt-3" id="sol4-2">
+                                <div class="solution">
+                                    <p><strong>Solução:</strong></p>
+                                    <p>z = -x - y, então:</p>
+                                    <p>(x,y,z) = x(1,0,-1) + y(0,1,-1)</p>
+                                    <p>Base: {(1,0,-1), (0,1,-1)}</p>
+                                    <p>Dimensão: 2</p>
+                                </div>
+                                <div class="comment">
+                                    <strong>Comentário:</strong> Uma equação linear reduz a dimensão em 1.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="exercise">
+                            <h6>Exercício 3: Independência Linear</h6>
+                            <p>Verifique se v₁ = (1,2), v₂ = (3,4) são LI.</p>
+                            
+                            <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#sol4-3">
+                                Ver Solução
+                            </button>
+                            
+                            <div class="collapse mt-3" id="sol4-3">
+                                <div class="solution">
+                                    <p><strong>Solução:</strong></p>
+                                    <p>\( det\begin{bmatrix} 1 & 2 \\ 3 & 4 \end{bmatrix} = 4 - 6 = -2 ≠ 0 \)</p>
+                                    <p><strong>∴ São linearmente independentes</strong></p>
+                                </div>
+                                <div class="comment">
+                                    <strong>Comentário:</strong> Em ℝⁿ, n vetores são LI se det ≠ 0.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h6><i class="fas fa-tasks me-2"></i>Exercícios para Praticar</h6>
+                            <ol>
+                                <li>Verifique se W = {(x,y,z) | x = 2y} é subespaço de ℝ³</li>
+                                <li>Encontre uma base para o espaço gerado por {(1,2,3), (2,4,6), (1,1,1)}</li>
+                                <li>Determine se {(1,0,1), (0,1,1), (1,1,0)} é LI</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Week 5 -->
+            <div class="week-card">
+                <div class="week-header" data-bs-toggle="collapse" data-bs-target="#week5">
+                    <h3 class="mb-0">Semana 5: Transformações Lineares</h3>
+                </div>
+                <div id="week5" class="collapse">
+                    <div class="week-content">
+                        <div class="summary-box">
+                            <h5><i class="fas fa-sitemap me-2"></i>Resumo Esquemático</h5>
+                            <ul>
+                                <li><strong>Definição:</strong> T: V → W é linear se T(u+v) = T(u) + T(v) e T(ku) = kT(u)</li>
+                                <li><strong>Exemplos:</strong> Rotação, projeção, reflexão, multiplicação por matriz</li>
+                                <li><strong>Núcleo e Imagem:</strong> Ker(T) = {v ∈ V | T(v) = 0}, Im(T) = {T(v) | v ∈ V}</li>
+                                <li><strong>Propriedades:</strong> T(0) = 0, dim(Ker) + dim(Im) = dim(V)</li>
+                                <li><strong>Aplicações:</strong> Computação gráfica, mudança de base</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="key-concept">
+                            <h6><i class="fas fa-star me-2"></i>Conceito-Chave: Núcleo e Imagem</h6>
+                            <p>O núcleo contém todos os vetores que são mapeados para zero. A imagem contém todos os vetores que podem ser obtidos pela transformação. Suas dimensões se relacionam pelo Teorema do Núcleo e da Imagem.</p>
+                        </div>
+                        
+                        <h5 class="mt-4">Exercícios Resolvidos</h5>
+                        
+                        <div class="exercise">
+                            <h6>Exercício 1: Verificação de Linearidade</h6>
+                            <p>Verifique se T(x,y) = (x+y, x-y) é linear.</p>
+                            
+                            <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#sol5-1">
+                                Ver Solução
+                            </button>
+                            
+                            <div class="collapse mt-3" id="sol5-1">
+                                <div class="solution">
+                                    <p><strong>Solução:</strong></p>
+                                    <p><strong>Homogeneidade:</strong> T(kx,ky) = (kx+ky, kx-ky) = k(x+y, x-y) = kT(x,y) ✓</p>
+                                    <p><strong>Aditividade:</strong> T(x₁+x₂, y₁+y₂) = (x₁+x₂+y₁+y₂, x₁+x₂-y₁-y₂) = (x₁+y₁, x₁-y₁) + (x₂+y₂, x₂-y₂) = T(x₁,y₁) + T(x₂,y₂) ✓</p>
+                                    <p><strong>∴ T é linear</strong></p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="exercise">
+                            <h6>Exercício 2: Núcleo e Imagem</h6>
+                            <p>Para T: ℝ³ → ℝ², T(x,y,z) = (x+y, y+z), encontre Ker(T) e Im(T).</p>
+                            
+                            <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#sol5-2">
+                                Ver Solução
+                            </button>
+                            
+                            <div class="collapse mt-3" id="sol5-2">
+                                <div class="solution">
+                                    <p><strong>Solução:</strong></p>
+                                    <p><strong>Ker(T):</strong> T(x,y,z) = (0,0) ⇒ x+y=0, y+z=0 ⇒ x = -y, z = -y ⇒ Ker(T) = {(-y, y, -y) | y ∈ ℝ}</p>
+                                    <p><strong>Im(T):</strong> Para qualquer (a,b) ∈ ℝ², tome (x,y,z) = (a,0,b) ⇒ T(a,0,b) = (a,b) ⇒ Im(T) = ℝ²</p>
+                                </div>
+                                <div class="comment">
+                                    <strong>Comentário:</strong> dim(Ker) = 1, dim(Im) = 2, dim(ℝ³) = 3 → 1+2=3 ✓
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="exercise">
+                            <h6>Exercício 3: Rotação 2D</h6>
+                            <p>Aplique rotação de 90° ao vetor (1,0).</p>
+                            
+                            <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#sol5-3">
+                                Ver Solução
+                            </button>
+                            
+                            <div class="collapse mt-3" id="sol5-3">
+                                <div class="solution">
+                                    <p><strong>Solução:</strong></p>
+                                    <p>\( R(90°) = \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix} \)</p>
+                                    <p>\( \begin{bmatrix} 0 & -1 \\ 1 & 0 \end{bmatrix} \begin{bmatrix} 1 \\ 0 \end{bmatrix} = \begin{bmatrix} 0 \\ 1 \end{bmatrix} \)</p>
+                                </div>
+                                <div class="comment">
+                                    <strong>Comentário:</strong> Matriz de rotação preserva comprimento e ângulos.
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h6><i class="fas fa-tasks me-2"></i>Exercícios para Praticar</h6>
+                            <ol>
+                                <li>Verifique se T(x,y) = (x², y) é linear</li>
+                                <li>Encontre Ker(T) e Im(T) para T(x,y,z) = (x-z, y+z)</li>
+                                <li>Aplique rotação de 45° ao vetor (1,1)</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Week 6 -->
+            <div class="week-card">
+                <div class="week-header" data-bs-toggle="collapse" data-bs-target="#week6">
+                    <h3 class="mb-0">Semana 6: Autovalores e Autovetores</h3>
+                </div>
+                <div id="week6" class="collapse">
+                    <div class="week-content">
+                        <div class="summary-box">
+                            <h5><i class="fas fa-sitemap me-2"></i>Resumo Esquemático</h5>
+                            <ul>
+                                <li><strong>Conceitos:</strong> Av = λv (v ≠ 0), λ = autovalor, v = autovetor</li>
+                                <li><strong>Cálculo:</strong> Equação característica: det(λI - A) = 0</li>
+                                <li><strong>Diagonalização:</strong> A = PDP⁻¹, P = autovetores, D = autovalores</li>
+                                <li><strong>Condição:</strong> n autovetores LI para diagonalização</li>
+                                <li><strong>Aplicações:</strong> Potência de matriz, sistemas dinâmicos, PCA</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="key-concept">
+                            <h6><i class="fas fa-star me-2"></i>Conceito-Chave: Diagonalização</h6>
+                            <p>Representação de uma matriz na forma A = PDP⁻¹, onde D é diagonal. Simplifica cálculos como potências de matriz: Aᵏ = PDᵏP⁻¹.</p>
+                        </div>
+                        
+                        <h5 class="mt-4">Exercícios Resolvidos</h5>
+                        
+                        <div class="exercise">
+                            <h6>Exercício 1: Autovalores e Autovetores</h6>
+                            <p>Encontre autovalores e autovetores de \( A = \begin{bmatrix} 3 & 0 \\ 8 & -1 \end{bmatrix} \).</p>
+                            
+                            <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#sol6-1">
+                                Ver Solução
+                            </button>
+                            
+                            <div class="collapse mt-3" id="sol6-1">
+                                <div class="solution">
+                                    <p><strong>Solução:</strong></p>
+                                    <p><strong>Equação característica:</strong></p>
+                                    <p>\( det(\lambda I - A) = \begin{vmatrix} \lambda-3 & 0 \\ -8 & \lambda+1 \end{vmatrix} = (\lambda-3)(\lambda+1) = 0 \)</p>
+                                    <p>λ₁ = 3, λ₂ = -1</p>
+                                    <p><strong>Autovetores:</strong></p>
+                                    <p>Para λ=3: (3I - A)v = 0 ⇒ v = (1,2) (ou múltiplo)</p>
+                                    <p>Para λ=-1: (-I - A)v = 0 ⇒ v = (0,1) (ou múltiplo)</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="exercise">
+                            <h6>Exercício 2: Diagonalização</h6>
+                            <p>Diagonalize \( A = \begin{bmatrix} 4 & 1 \\ 2 & 3 \end{bmatrix} \).</p>
+                            
+                            <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#sol6-2">
+                                Ver Solução
+                            </button>
+                            
+                            <div class="collapse mt-3" id="sol6-2">
+                                <div class="solution">
+                                    <p><strong>Solução:</strong></p>
+                                    <p>Autovalores: λ₁=5, λ₂=2</p>
+                                    <p>Autovetores: v₁=(1,1), v₂=(1,-2)</p>
+                                    <p>Matrizes:</p>
+                                    <p>\( P = \begin{bmatrix} 1 & 1 \\ 1 & -2 \end{bmatrix}, \quad D = \begin{bmatrix} 5 & 0 \\ 0 & 2 \end{bmatrix} \)</p>
+                                    <p>\( P^{-1} = \frac{1}{-3} \begin{bmatrix} -2 & -1 \\ -1 & 1 \end{bmatrix} = \begin{bmatrix} 2/3 & 1/3 \\ 1/3 & -1/3 \end{bmatrix} \)</p>
+                                    <p>Verificação: A = PDP⁻¹ ✓</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="exercise">
+                            <h6>Exercício 3: Potência de Matriz</h6>
+                            <p>Calcule A⁴ para a matriz anterior.</p>
+                            
+                            <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#sol6-3">
+                                Ver Solução
+                            </button>
+                            
+                            <div class="collapse mt-3" id="sol6-3">
+                                <div class="solution">
+                                    <p><strong>Solução:</strong></p>
+                                    <p>\( A^4 = PD^4P^{-1} = \begin{bmatrix} 1 & 1 \\ 1 & -2 \end{bmatrix} \begin{bmatrix} 625 & 0 \\ 0 & 16 \end{bmatrix} \begin{bmatrix} 2/3 & 1/3 \\ 1/3 & -1/3 \end{bmatrix} \)</p>
+                                    <p>\( = \begin{bmatrix} 625 & 16 \\ 625 & -32 \end{bmatrix} \begin{bmatrix} 2/3 & 1/3 \\ 1/3 & -1/3 \end{bmatrix} = \begin{bmatrix} 422 & 203 \\ 406 & 219 \end{bmatrix} \)</p>
+                                </div>
+                                <div class="comment">
+                                    <strong>Comentário:</strong> Muito mais fácil que multiplicar A×A×A×A!
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h6><i class="fas fa-tasks me-2"></i>Exercícios para Praticar</h6>
+                            <ol>
+                                <li>Encontre autovalores e autovetores de \( \begin{bmatrix} 2 & 1 \\ 1 & 2 \end{bmatrix} \)</li>
+                                <li>Verifique se \( \begin{bmatrix} 1 & 2 \\ 0 & 1 \end{bmatrix} \) é diagonalizável</li>
+                                <li>Calcule A³ para \( \begin{bmatrix} 2 & 0 \\ 0 & 3 \end{bmatrix} \)</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Week 7 -->
+            <div class="week-card">
+                <div class="week-header" data-bs-toggle="collapse" data-bs-target="#week7">
+                    <h3 class="mb-0">Semana 7: Aplicações Avançadas</h3>
+                </div>
+                <div id="week7" class="collapse">
+                    <div class="week-content">
+                        <div class="summary-box">
+                            <h5><i class="fas fa-sitemap me-2"></i>Resumo Esquemático</h5>
+                            <ul>
+                                <li><strong>Movimento no ℝ³:</strong> Vetores posição e deslocamento, subespaços, rotações</li>
+                                <li><strong>Reconstrução de Equações:</strong> Reta por 2 pontos, circunferência por 3 pontos, esfera por 4 pontos</li>
+                                <li><strong>Ferramentas:</strong> GeoGebra 3D, Python/Octave, aplicações em drones, robótica, astronomia</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="key-concept">
+                            <h6><i class="fas fa-star me-2"></i>Conceito-Chave: Reconstrução de Equações</h6>
+                            <p>Usando determinantes, podemos encontrar equações de curvas e superfícies que passam por pontos conhecidos. Para uma reta por 2 pontos, circunferência por 3 pontos, esfera por 4 pontos.</p>
+                        </div>
+                        
+                        <h5 class="mt-4">Exercícios Resolvidos</h5>
+                        
+                        <div class="exercise">
+                            <h6>Exercício 1: Movimento de Drone</h6>
+                            <p>Drone em (1,5,10) desloca-se por (3,7,0). Nova posição?</p>
+                            
+                            <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#sol7-1">
+                                Ver Solução
+                            </button>
+                            
+                            <div class="collapse mt-3" id="sol7-1">
+                                <div class="solution">
+                                    <p><strong>Solução:</strong></p>
+                                    <p>\( P_{final} = \begin{bmatrix} 1 \\ 5 \\ 10 \end{bmatrix} + \begin{bmatrix} 3 \\ 7 \\ 0 \end{bmatrix} = \begin{bmatrix} 4 \\ 12 \\ 10 \end{bmatrix} \)</p>
+                                </div>
+                                <div class="comment">
+                                    <strong>Comentário:</strong> Deslocamento no plano xy (z constante).
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="exercise">
+                            <h6>Exercício 2: Rotação 3D</h6>
+                            <p>Aplique rotação de 90° em torno do eixo z ao vetor (4,12,10).</p>
+                            
+                            <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#sol7-2">
+                                Ver Solução
+                            </button>
+                            
+                            <div class="collapse mt-3" id="sol7-2">
+                                <div class="solution">
+                                    <p><strong>Solução:</strong></p>
+                                    <p>\( R_z(90°) = \begin{bmatrix} 0 & -1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 1 \end{bmatrix} \)</p>
+                                    <p>\( \begin{bmatrix} 0 & -1 & 0 \\ 1 & 0 & 0 \\ 0 & 0 & 1 \end{bmatrix} \begin{bmatrix} 4 \\ 12 \\ 10 \end{bmatrix} = \begin{bmatrix} -12 \\ 4 \\ 10 \end{bmatrix} \)</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="exercise">
+                            <h6>Exercício 3: Equação da Reta por 2 Pontos</h6>
+                            <p>Encontre equação da reta por (1,1) e (-3,7).</p>
+                            
+                            <button class="btn btn-sm btn-outline-primary" type="button" data-bs-toggle="collapse" data-bs-target="#sol7-3">
+                                Ver Solução
+                            </button>
+                            
+                            <div class="collapse mt-3" id="sol7-3">
+                                <div class="solution">
+                                    <p><strong>Solução:</strong></p>
+                                    <p>Usando determinante:</p>
+                                    <p>\( \begin{vmatrix} x & y & 1 \\ 1 & 1 & 1 \\ -3 & 7 & 1 \end{vmatrix} = 0 \)</p>
+                                    <p>\( x(1-7) - y(1+3) + 1(7+3) = -6x -4y + 10 = 0 \)</p>
+                                    <p>Equação: 3x + 2y - 5 = 0</p>
+                                </div>
+                                <div class="comment">
+                                    <strong>Comentário:</strong> Método funciona para qualquer curva (circunferência, esfera, etc.)
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-4">
+                            <h6><i class="fas fa-tasks me-2"></i>Exercícios para Praticar</h6>
+                            <ol>
+                                <li>Um drone em (2,3,5) move-se por (1,-1,0). Nova posição?</li>
+                                <li>Aplique rotação de 180° em torno do eixo x a (1,2,3)</li>
+                                <li>Encontre equação da circunferência por (0,0), (1,0), (0,1)</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section id="resources" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Recursos e Ferramentas</h2>
+            
+            <div class="row">
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-laptop-code me-2 text-primary"></i>Softwares Úteis</h5>
+                            <div class="tool-item">
+                                <strong>Octave / MATLAB</strong> - Para cálculos numéricos
+                            </div>
+                            <div class="tool-item">
+                                <strong>GeoGebra</strong> - Para visualização 2D/3D
+                            </div>
+                            <div class="tool-item">
+                                <strong>Python + NumPy + SymPy</strong> - Para álgebra simbólica
+                            </div>
+                            <div class="tool-item">
+                                <strong>Wolfram Alpha</strong> - Para verificação de cálculos
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 mb-4">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-book me-2 text-success"></i>Recursos de Estudo</h5>
+                            <div class="tool-item">
+                                <strong>Khan Academy</strong> - Videoaulas e exercícios
+                            </div>
+                            <div class="tool-item">
+                                <strong>3Blue1Brown</strong> - Essence of Linear Algebra (série)
+                            </div>
+                            <div class="tool-item">
+                                <strong>Livro: Álgebra Linear com Aplicações</strong> - Anton & Rorres
+                            </div>
+                            <div class="tool-item">
+                                <strong>MIT OpenCourseWare</strong> - Cursos gratuitos
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="row mt-4">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"><i class="fas fa-graduation-cap me-2 text-warning"></i>Plano de Estudos Recomendado</h5>
+                            <ol>
+                                <li><strong>Dia 1-2:</strong> Revisar conceitos teóricos da semana</li>
+                                <li><strong>Dia 3:</strong> Resolver exercícios propostos</li>
+                                <li><strong>Dia 4:</strong> Praticar com softwares</li>
+                                <li><strong>Dia 5:</strong> Revisar aplicações práticas</li>
+                                <li><strong>Dia 6:</strong> Fazer autoavaliação</li>
+                                <li><strong>Dia 7:</strong> Revisão geral e preparação para próxima semana</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating Menu -->
+    <div class="floating-menu">
+        <div class="btn-group-vertical">
+            <button class="floating-btn mb-2" data-bs-toggle="tooltip" data-bs-placement="left" title="Voltar ao Topo">
+                <i class="fas fa-arrow-up"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light py-4">
+        <div class="container text-center">
+            <p>Revisão de Álgebra Linear - Desenvolvido para estudos acadêmicos</p>
+            <p class="small">Baseado no material das apostilas MAT500 da UNIVESP</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Inicializar tooltips
+        var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
+        var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
+            return new bootstrap.Tooltip(tooltipTriggerEl)
+        })
+        
+        // Botão voltar ao topo
+        document.querySelector('.floating-btn .fa-arrow-up').closest('.floating-btn').addEventListener('click', function() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
