@@ -341,6 +341,8 @@
         <div class="container">
             <h2 class="text-center mb-5">PDFs das Semanas</h2>
             <p class="text-center mb-4">Acesse os materiais completos de cada semana em formato PDF</p>
+           <p class="text-center mb-4">Os PDFs foram desenvolvidos pelo Autor Formador <strong class="fs-5 text-dark">Cristhof Johann Roosen Runge</strong> e são materiais disponibilizados aos alunos da UNIVESP no AVA da disciplina Álgebra Linear da UNIVESP</p>
+
             
             <div class="pdf-section">
                 <div class="row">
@@ -439,15 +441,80 @@
                 <div id="week1" class="collapse show">
                     <div class="week-content">
                         <div class="summary-box">
-                            <h5><i class="fas fa-sitemap me-2"></i>Resumo Esquemático</h5>
-                            <ul>
-                                <li><strong>Conceitos Básicos:</strong> Definição, notação, dimensão</li>
-                                <li><strong>Tipos de Matrizes:</strong> Quadrada, diagonal, identidade, nula, transposta</li>
-                                <li><strong>Operações:</strong> Adição, multiplicação por escalar, multiplicação de matrizes</li>
-                                <li><strong>Propriedades:</strong> Associativa, distributiva, NÃO comutativa</li>
-                                <li><strong>Matriz Inversa:</strong> Definição, métodos de cálculo</li>
-                            </ul>
-                        </div>
+    <h5><i class="fas fa-sitemap me-2"></i>Resumo Esquemático Detalhado</h5>
+    
+    <div class="mb-3">
+        <h6><strong>1. CONCEITOS FUNDAMENTAIS</strong></h6>
+        <ul>
+            <li><strong>Definição:</strong> Estrutura matemática que organiza números em linhas e colunas</li>
+            <li><strong>Notação:</strong> A = [a<sub>ij</sub>]<sub>m×n</sub> onde i = linha, j = coluna</li>
+            <li><strong>Dimensão:</strong> m × n (m linhas, n colunas)</li>
+            <li><strong>Elemento:</strong> a<sub>ij</sub> representa o elemento na i-ésima linha e j-ésima coluna</li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>2. TIPOS ESPECIAIS DE MATRIZES</strong></h6>
+        <ul>
+            <li><strong>Matriz Quadrada:</strong> Número de linhas = número de colunas</li>
+            <li><strong>Matriz Diagonal:</strong> Elementos fora da diagonal principal são zero</li>
+            <li><strong>Matriz Identidade (I):</strong> Diagonal principal = 1, outros elementos = 0</li>
+            <li><strong>Matriz Nula/Zero:</strong> Todos os elementos são zero</li>
+            <li><strong>Matriz Transposta (A<sup>T</sup>):</strong> Trocam-se linhas por colunas</li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>3. OPERAÇÕES BÁSICAS</strong></h6>
+        <ul>
+            <li><strong>Adição/Subtração:</strong> Só possível entre matrizes de mesma dimensão</li>
+            <li><strong>Multiplicação por Escalar:</strong> Multiplica cada elemento pelo escalar</li>
+            <li><strong>Multiplicação de Matrizes:</strong> 
+                <ul>
+                    <li>Só possível se nº colunas de A = nº linhas de B</li>
+                    <li>Resultado: matriz com nº linhas de A e nº colunas de B</li>
+                    <li>C<sub>ij</sub> = Σ(a<sub>ik</sub> × b<sub>kj</sub>)</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>4. PROPRIEDADES ALGÉBRICAS</strong></h6>
+        <ul>
+            <li><strong>Adição:</strong> Comutativa (A+B = B+A) e Associativa ((A+B)+C = A+(B+C))</li>
+            <li><strong>Multiplicação:</strong> NÃO comutativa (AB ≠ BA), mas Associativa ((AB)C = A(BC))</li>
+            <li><strong>Distributividade:</strong> A(B+C) = AB + AC</li>
+            <li><strong>Elemento Neutro:</strong> Matriz identidade I (AI = IA = A)</li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>5. MATRIZ INVERSA</strong></h6>
+        <ul>
+            <li><strong>Definição:</strong> A × A<sup>-1</sup> = A<sup>-1</sup> × A = I</li>
+            <li><strong>Condição de existência:</strong> A deve ser quadrada e det(A) ≠ 0</li>
+            <li><strong>Métodos de cálculo:</strong>
+                <ul>
+                    <li><strong>Matriz 2×2:</strong> A<sup>-1</sup> = (1/det(A)) × [d -b; -c a]</li>
+                    <li><strong>Algoritmo de Gauss-Jordan:</strong> [A|I] → [I|A<sup>-1</sup>]</li>
+                </ul>
+            </li>
+            <li><strong>Operações Elementares:</strong> Troca de linhas, multiplicação por escalar, adição de múltiplo</li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>6. MATRIZES NÃO INVERTÍVEIS (SINGULARES)</strong></h6>
+        <ul>
+            <li>Matriz não quadrada</li>
+            <li>Linhas ou colunas proporcionais</li>
+            <li>Linha ou coluna toda de zeros</li>
+            <li>Linhas ou colunas repetidas</li>
+            <li>det(A) = 0</li>
+        </ul>
+    </div>
+</div>
                         
                         <div class="key-concept">
                             <h6><i class="fas fa-star me-2"></i>Conceito-Chave: Multiplicação de Matrizes</h6>
@@ -564,16 +631,83 @@
                 </div>
                 <div id="week2" class="collapse">
                     <div class="week-content">
+
+
                         <div class="summary-box">
-                            <h5><i class="fas fa-sitemap me-2"></i>Resumo Esquemático</h5>
-                            <ul>
-                                <li><strong>Conceito:</strong> Número real associado a matriz quadrada</li>
-                                <li><strong>Cálculo:</strong> 2×2 (ad-bc), 3×3 (Regra de Sarrus), n×n (Expansão por cofatores)</li>
-                                <li><strong>Propriedades:</strong> det(AB)=det(A)det(B), det(Aᵀ)=det(A), troca de linhas muda sinal</li>
-                                <li><strong>Método da Matriz Adjunta:</strong> Técnica para calcular inversas usando determinantes e cofatores</li>
-                                <li><strong>Aplicações:</strong> Inversibilidade (det≠0), Regra de Cramer, área/volume geométrico</li>
-                            </ul>
-                        </div>
+    <h5><i class="fas fa-sitemap me-2"></i>Resumo Esquemático Detalhado</h5>
+    
+    <div class="mb-3">
+        <h6><strong>1. CONCEITOS FUNDAMENTAIS</strong></h6>
+        <ul>
+            <li><strong>Definição:</strong> Função que associa a cada matriz quadrada um número real</li>
+            <li><strong>Notação:</strong> det(A) ou |A|</li>
+            <li><strong>Interpretação geométrica:</strong> Medida de volume/área formada pelos vetores coluna</li>
+            <li><strong>Importância:</strong> Indica se matriz é invertível (det ≠ 0) ou singular (det = 0)</li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>2. MÉTODOS DE CÁLCULO</strong></h6>
+        <ul>
+            <li><strong>Matriz 2×2:</strong> det(A) = ad - bc</li>
+            <li><strong>Matriz 3×3 (Regra de Sarrus):</strong>
+                <ul>
+                    <li>Repetir duas primeiras colunas à direita</li>
+                    <li>Somar produtos diagonais principais</li>
+                    <li>Subtrair produtos diagonais secundários</li>
+                </ul>
+            </li>
+            <li><strong>Matriz n×n (Expansão por Cofatores):</strong>
+                <ul>
+                    <li>C<sub>ij</sub> = (-1)<sup>i+j</sup> × M<sub>ij</sub></li>
+                    <li>M<sub>ij</sub> = determinante da submatriz eliminando linha i e coluna j</li>
+                    <li>det(A) = Σ(a<sub>ij</sub> × C<sub>ij</sub>) para qualquer linha/coluna</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>3. PROPRIEDADES FUNDAMENTAIS</strong></h6>
+        <ul>
+            <li>det(I) = 1</li>
+            <li>Troca de duas linhas/colunas muda o sinal do determinante</li>
+            <li>det(A<sup>T</sup>) = det(A)</li>
+            <li>Multiplicar linha/coluna por k: det fica multiplicado por k</li>
+            <li>Adição de múltiplo de linha/coluna a outra não altera det</li>
+            <li>det(kA) = k<sup>n</sup> × det(A) para matriz n×n</li>
+            <li>det(AB) = det(A) × det(B) (propriedade multiplicativa)</li>
+            <li>det(A+B) ≠ det(A) + det(B)</li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>4. REGRA DE CRAMER</strong></h6>
+        <ul>
+            <li><strong>Aplicação:</strong> Resolver sistemas lineares n×n com det(A) ≠ 0</li>
+            <li><strong>Método:</strong> x<sub>j</sub> = det(A<sub>j</sub>)/det(A)</li>
+            <li><strong>A<sub>j</sub>:</strong> Matriz A com j-ésima coluna substituída pela matriz b</li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>5. RELAÇÃO COM MATRIZ INVERSA</strong></h6>
+        <ul>
+            <li>A é invertível se e somente se det(A) ≠ 0</li>
+            <li>A<sup>-1</sup> = (1/det(A)) × adj(A)</li>
+            <li><strong>Matriz Adjunta:</strong> Transposta da matriz de cofatores</li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>6. APLICAÇÕES GEOMÉTRICAS</strong></h6>
+        <ul>
+            <li><strong>Área de triângulos:</strong> Área = (1/2) × |det(M)|</li>
+            <li><strong>Volume de paralelepípedos:</strong> Volume = |det(A)|</li>
+            <li><strong>Mudança de variáveis em integrais:</strong> Usando determinante jacobiano</li>
+        </ul>
+    </div>
+</div>
                         
                         <div class="key-concept">
                             <h6><i class="fas fa-star me-2"></i>Conceito-Chave: Regra de Sarrus</h6>
@@ -824,15 +958,105 @@
                 </div>
                 <div id="week3" class="collapse">
                     <div class="week-content">
+
+
                         <div class="summary-box">
-                            <h5><i class="fas fa-sitemap me-2"></i>Resumo Esquemático</h5>
-                            <ul>
-                                <li><strong>Conceitos:</strong> Forma geral, representação matricial (Ax=b), matriz aumentada [A|b]</li>
-                                <li><strong>Classificação:</strong> Possível determinado, possível indeterminado, impossível</li>
-                                <li><strong>Métodos de Resolução:</strong> Eliminação de Gauss, Gauss-Jordan, substituição retroativa</li>
-                                <li><strong>Sistemas Homogêneos:</strong> Ax=0, sempre tem solução trivial</li>
-                            </ul>
-                        </div>
+    <h5><i class="fas fa-sitemap me-2"></i>Resumo Esquemático Detalhado</h5>
+    
+    <div class="mb-3">
+        <h6><strong>1. CONCEITOS FUNDAMENTAIS</strong></h6>
+        <ul>
+            <li><strong>Definição:</strong> Conjunto de equações lineares com mesma solução</li>
+            <li><strong>Forma geral:</strong> a<sub>11</sub>x<sub>1</sub> + ... + a<sub>1n</sub>x<sub>n</sub> = b<sub>1</sub></li>
+            <li><strong>Representação matricial:</strong> Ax = b</li>
+            <li><strong>Matriz aumentada:</strong> [A|b]</li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>2. CLASSIFICAÇÃO DOS SISTEMAS</strong></h6>
+        <ul>
+            <li><strong>Sistema Possível Determinado (SPD):</strong>
+                <ul>
+                    <li>Uma única solução</li>
+                    <li>p<sub>a</sub> = p<sub>c</sub> = n</li>
+                </ul>
+            </li>
+            <li><strong>Sistema Possível Indeterminado (SPI):</strong>
+                <ul>
+                    <li>Infinitas soluções</li>
+                    <li>p<sub>a</sub> = p<sub>c</sub> < n</li>
+                </ul>
+            </li>
+            <li><strong>Sistema Impossível (SI):</strong>
+                <ul>
+                    <li>Não possui solução</li>
+                    <li>p<sub>a</sub> ≠ p<sub>c</sub></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>3. MATRIZ ESCALONADA (FORMA ESCADA)</strong></h6>
+        <ul>
+            <li><strong>Condições:</strong>
+                <ul>
+                    <li>Linha não nula tem pivô = 1</li>
+                    <li>Pivô da linha inferior ocorre mais à direita</li>
+                    <li>Linhas nulas agrupadas na parte inferior</li>
+                </ul>
+            </li>
+            <li><strong>Posto da matriz:</strong> Número de linhas não nulas na forma escalonada</li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>4. MÉTODOS DE RESOLUÇÃO</strong></h6>
+        <ul>
+            <li><strong>Eliminação de Gauss:</strong>
+                <ul>
+                    <li>Transforma em matriz escalonada</li>
+                    <li>Usa substituição retroativa</li>
+                    <li>Mais eficiente computacionalmente</li>
+                </ul>
+            </li>
+            <li><strong>Método de Gauss-Jordan:</strong>
+                <ul>
+                    <li>Transforma em forma escada linha reduzida</li>
+                    <li>Solução aparece diretamente</li>
+                    <li>Melhor para sistemas pequenos</li>
+                </ul>
+            </li>
+            <li><strong>Operações Elementares:</strong>
+                <ul>
+                    <li>Troca de linhas</li>
+                    <li>Multiplicação de linha por escalar ≠ 0</li>
+                    <li>Adição de múltiplo de linha a outra</li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>5. SISTEMAS HOMOGÊNEOS</strong></h6>
+        <ul>
+            <li><strong>Forma:</strong> Ax = 0</li>
+            <li><strong>Solução trivial:</strong> x = 0</li>
+            <li><strong>Soluções não triviais:</strong> Existem quando nº incógnitas > nº equações independentes</li>
+            <li><strong>Sempre é consistente</strong> (sempre tem pelo menos solução trivial)</li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>6. APLICAÇÕES PRÁTICAS</strong></h6>
+        <ul>
+            <li><strong>Engenharia:</strong> Análise estrutural, método dos elementos finitos</li>
+            <li><strong>Economia:</strong> Programação linear, análise insumo-produto</li>
+            <li><strong>Computação:</strong> Algoritmos de grafos, machine learning, correção de erros</li>
+        </ul>
+    </div>
+</div>
                         
                         <div class="key-concept">
                             <h6><i class="fas fa-star me-2"></i>Conceito-Chave: Eliminação de Gauss</h6>
@@ -938,16 +1162,93 @@
                 </div>
                 <div id="week4" class="collapse">
                     <div class="week-content">
+
+
+
                         <div class="summary-box">
-                            <h5><i class="fas fa-sitemap me-2"></i>Resumo Esquemático</h5>
-                            <ul>
-                                <li><strong>Definição:</strong> Conjunto V com + e × por escalar, satisfaz 10 axiomas</li>
-                                <li><strong>Exemplos:</strong> ℝ², ℝ³, polinômios, matrizes</li>
-                                <li><strong>Subespaços:</strong> W ⊆ V é subespaço se fechado para adição e multiplicação por escalar</li>
-                                <li><strong>Base e Dimensão:</strong> Base = vetores LI que geram V, dimensão = nº vetores na base</li>
-                                <li><strong>Conceitos Chave:</strong> Combinação linear, independência linear, conjunto gerador</li>
-                            </ul>
-                        </div>
+    <h5><i class="fas fa-sitemap me-2"></i>Resumo Esquemático Detalhado</h5>
+    
+    <div class="mb-3">
+        <h6><strong>1. CONCEITOS FUNDAMENTAIS</strong></h6>
+        <ul>
+            <li><strong>Definição:</strong> Conjunto V com operações de adição e multiplicação por escalar</li>
+            <li><strong>Operações:</strong>
+                <ul>
+                    <li>Adição: u + v ∈ V</li>
+                    <li>Multiplicação por escalar: au ∈ V</li>
+                </ul>
+            </li>
+            <li><strong>Exemplos:</strong> ℝ², ℝ³, polinômios, matrizes</li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>2. AXIOMAS DOS ESPAÇOS VETORIAIS</strong></h6>
+        <ol>
+            <li>Fechamento da adição</li>
+            <li>Comutatividade da adição</li>
+            <li>Associatividade da adição</li>
+            <li>Elemento neutro aditivo (vetor nulo)</li>
+            <li>Elemento simétrico (oposto)</li>
+            <li>Fechamento da multiplicação por escalar</li>
+            <li>Distributividade do escalar sobre soma de vetores</li>
+            <li>Distributividade escalar sobre soma de escalares</li>
+            <li>Associatividade da multiplicação escalar</li>
+            <li>Elemento neutro multiplicativo (escalar 1)</li>
+        </ol>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>3. SUBESPAÇOS VETORIAIS</strong></h6>
+        <ul>
+            <li><strong>Definição:</strong> Subconjunto W ⊆ V que também é espaço vetorial</li>
+            <li><strong>Condições:</strong>
+                <ul>
+                    <li>Fechamento para adição: u,v ∈ W ⇒ u+v ∈ W</li>
+                    <li>Fechamento para multiplicação: u ∈ W, a ∈ ℝ ⇒ au ∈ W</li>
+                </ul>
+            </li>
+            <li><strong>Exemplos:</strong> Retas/planos que passam pela origem</li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>4. COMBINAÇÕES LINEARES E CONJUNTOS GERADORES</strong></h6>
+        <ul>
+            <li><strong>Combinação linear:</strong> w = a₁v₁ + a₂v₂ + ... + a<sub>r</sub>v<sub>r</sub></li>
+            <li><strong>Conjunto gerador:</strong> Conjunto de vetores cujas combinações lineares geram o espaço</li>
+            <li><strong>Espaço gerado:</strong> W = ger{v₁, v₂, ..., v<sub>r</sub>}</li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>5. INDEPENDÊNCIA LINEAR</strong></h6>
+        <ul>
+            <li><strong>Definição:</strong> Vetores são LI se a única solução para a₁v₁ + ... + a<sub>n</sub>v<sub>n</sub> = 0 é a trivial (a₁ = a₂ = ... = a<sub>n</sub> = 0)</li>
+            <li><strong>Teste:</strong> Em ℝⁿ, n vetores são LI se det ≠ 0</li>
+            <li><strong>Dependência linear:</strong> Pelo menos um vetor pode ser escrito como combinação dos outros</li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>6. BASE E DIMENSÃO</strong></h6>
+        <ul>
+            <li><strong>Base:</strong> Conjunto de vetores LI que geram o espaço</li>
+            <li><strong>Base canônica:</strong> Vetores unitários (ℝ²: (1,0), (0,1); ℝ³: (1,0,0), (0,1,0), (0,0,1))</li>
+            <li><strong>Dimensão:</strong> Número de vetores em uma base do espaço</li>
+            <li><strong>Teorema:</strong> Todas as bases de um espaço têm o mesmo número de elementos</li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>7. APLICAÇÕES PRÁTICAS</strong></h6>
+        <ul>
+            <li><strong>Física:</strong> Forças, movimento, posição, velocidade, aceleração</li>
+            <li><strong>Computação gráfica:</strong> Modelagem 3D, transformações (translação, rotação, escalonamento)</li>
+            <li><strong>Machine Learning:</strong> Representação de dados, redução de dimensionalidade (PCA), classificação</li>
+        </ul>
+    </div>
+</div>
                         
                         <div class="key-concept">
                             <h6><i class="fas fa-star me-2"></i>Conceito-Chave: Independência Linear</h6>
@@ -1068,16 +1369,88 @@
                 </div>
                 <div id="week5" class="collapse">
                     <div class="week-content">
+
+
                         <div class="summary-box">
-                            <h5><i class="fas fa-sitemap me-2"></i>Resumo Esquemático</h5>
-                            <ul>
-                                <li><strong>Definição:</strong> T: V → W é linear se T(u+v) = T(u) + T(v) e T(ku) = kT(u)</li>
-                                <li><strong>Exemplos:</strong> Rotação, projeção, reflexão, multiplicação por matriz</li>
-                                <li><strong>Núcleo e Imagem:</strong> Ker(T) = {v ∈ V | T(v) = 0}, Im(T) = {T(v) | v ∈ V}</li>
-                                <li><strong>Propriedades:</strong> T(0) = 0, dim(Ker) + dim(Im) = dim(V)</li>
-                                <li><strong>Aplicações:</strong> Computação gráfica, mudança de base</li>
-                            </ul>
-                        </div>
+    <h5><i class="fas fa-sitemap me-2"></i>Resumo Esquemático Detalhado</h5>
+    
+    <div class="mb-3">
+        <h6><strong>1. CONCEITOS FUNDAMENTAIS</strong></h6>
+        <ul>
+            <li><strong>Definição:</strong> Função T: V → W entre espaços vetoriais que preserva operações</li>
+            <li><strong>Propriedades:</strong>
+                <ul>
+                    <li>Homogeneidade: T(au) = aT(u)</li>
+                    <li>Aditividade: T(u+v) = T(u) + T(v)</li>
+                </ul>
+            </li>
+            <li><strong>Consequências:</strong> T(0) = 0, T(u-v) = T(u) - T(v)</li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>2. REPRESENTAÇÃO MATRICIAL</strong></h6>
+        <ul>
+            <li><strong>Transformações matriciais:</strong> T(v) = Av</li>
+            <li><strong>Matriz canônica:</strong> Matriz que representa a transformação na base canônica</li>
+            <li><strong>Mudança de base:</strong> A transformação pode ter representações matriciais diferentes em bases diferentes</li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>3. NÚCLEO (KERNEL) E IMAGEM</strong></h6>
+        <ul>
+            <li><strong>Núcleo:</strong> Ker(T) = {v ∈ V | T(v) = 0}</li>
+            <li><strong>Imagem:</strong> Im(T) = {T(v) | v ∈ V}</li>
+            <li><strong>Teorema do Núcleo e Imagem:</strong> dim(Ker(T)) + dim(Im(T)) = dim(V)</li>
+            <li><strong>Nulidade:</strong> dim(Ker(T))</li>
+            <li><strong>Posto:</strong> dim(Im(T))</li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>4. TRANSFORMAÇÕES GEOMÉTRICAS EM ℝ² E ℝ³</strong></h6>
+        <ul>
+            <li><strong>Rotação:</strong>
+                <ul>
+                    <li>ℝ²: R(θ) = [cosθ -sinθ; sinθ cosθ]</li>
+                    <li>ℝ³: Matrizes específicas para rotação em torno de cada eixo</li>
+                </ul>
+            </li>
+            <li><strong>Reflexão:</strong> Inverte vetores em relação a uma reta/plano</li>
+            <li><strong>Projeção:</strong> Projeta vetores em subespaço</li>
+            <li><strong>Mudança de escala:</strong> S = [α 0; 0 β] (ℝ²) ou [α 0 0; 0 β 0; 0 0 γ] (ℝ³)</li>
+            <li><strong>Cisalhamento:</strong> Desliza vetores paralelamente a uma direção</li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>5. COMPOSIÇÃO DE TRANSFORMAÇÕES</strong></h6>
+        <ul>
+            <li><strong>Definição:</strong> (T∘S)(v) = T(S(v))</li>
+            <li><strong>Matriz da composição:</strong> [T∘S] = [T][S]</li>
+            <li><strong>Não comutativa:</strong> Em geral, T∘S ≠ S∘T</li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>6. TRANSFORMAÇÕES INVERSÍVEIS</strong></h6>
+        <ul>
+            <li><strong>Definição:</strong> Existe T<sup>-1</sup> tal que T∘T<sup>-1</sup> = T<sup>-1</sup>∘T = I</li>
+            <li><strong>Condição:</strong> T é bijetora (injetora e sobrejetora)</li>
+            <li><strong>Matriz inversa:</strong> [T<sup>-1</sup>] = [T]<sup>-1</sup></li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>7. APLICAÇÕES PRÁTICAS</strong></h6>
+        <ul>
+            <li><strong>Computação gráfica:</strong> Rotação, translação, escala de objetos 3D</li>
+            <li><strong>Física:</strong> Transformações de sistemas de coordenadas, transformações de Lorentz</li>
+            <li><strong>Machine Learning:</strong> SVM (Support Vector Machines), PCA (Principal Component Analysis)</li>
+        </ul>
+    </div>
+</div>
                         
                         <div class="key-concept">
                             <h6><i class="fas fa-star me-2"></i>Conceito-Chave: Núcleo e Imagem</h6>
@@ -1192,16 +1565,87 @@
                 </div>
                 <div id="week6" class="collapse">
                     <div class="week-content">
+
+
+
                         <div class="summary-box">
-                            <h5><i class="fas fa-sitemap me-2"></i>Resumo Esquemático</h5>
-                            <ul>
-                                <li><strong>Conceitos:</strong> Av = λv (v ≠ 0), λ = autovalor, v = autovetor</li>
-                                <li><strong>Cálculo:</strong> Equação característica: det(λI - A) = 0</li>
-                                <li><strong>Diagonalização:</strong> A = PDP⁻¹, P = autovetores, D = autovalores</li>
-                                <li><strong>Condição:</strong> n autovetores LI para diagonalização</li>
-                                <li><strong>Aplicações:</strong> Potência de matriz, sistemas dinâmicos, PCA</li>
-                            </ul>
-                        </div>
+    <h5><i class="fas fa-sitemap me-2"></i>Resumo Esquemático Detalhado</h5>
+    
+    <div class="mb-3">
+        <h6><strong>1. CONCEITOS FUNDAMENTAIS</strong></h6>
+        <ul>
+            <li><strong>Autovalor (λ):</strong> Escalar que representa o fator de escalonamento</li>
+            <li><strong>Autovetor (v):</strong> Vetor não nulo cuja direção é preservada pela transformação</li>
+            <li><strong>Equação fundamental:</strong> Av = λv</li>
+            <li><strong>Autoespaço:</strong> E(λ) = {v | Av = λv} = Ker(A - λI)</li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>2. EQUAÇÃO CARACTERÍSTICA</strong></h6>
+        <ul>
+            <li><strong>Definição:</strong> det(λI - A) = 0</li>
+            <li><strong>Polinômio característico:</strong> p(λ) = det(λI - A)</li>
+            <li><strong>Raízes:</strong> Autovalores da matriz A</li>
+            <li><strong>Multiplicidade algébrica:</strong> Número de vezes que λ aparece como raiz</li>
+            <li><strong>Multiplicidade geométrica:</strong> dim(E(λ)) = n - posto(A - λI)</li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>3. MÉTODO PARA ENCONTRAR AUTOVALORES E AUTOVETORES</strong></h6>
+        <ol>
+            <li>Construir matriz (λI - A)</li>
+            <li>Calcular det(λI - A)</li>
+            <li>Resolver polinômio característico para encontrar autovalores</li>
+            <li>Para cada λ, resolver sistema (A - λI)v = 0</li>
+            <li>Encontrar autovetores (soluções não triviais)</li>
+        </ol>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>4. PROPRIEDADES DOS AUTOVALORES E AUTOVETORES</strong></h6>
+        <ul>
+            <li>Soma dos autovalores = traço(A)</li>
+            <li>Produto dos autovalores = det(A)</li>
+            <li>Autovetores associados a autovalores distintos são LI</li>
+            <li>Matriz simétrica: Autovalores reais, autovetores ortogonais</li>
+            <li>Matriz triangular: Autovalores = elementos da diagonal</li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>5. DIAGONALIZAÇÃO DE MATRIZES</strong></h6>
+        <ul>
+            <li><strong>Condição:</strong> A possui n autovetores LI</li>
+            <li><strong>Forma:</strong> A = PDP<sup>-1</sup></li>
+            <li><strong>P:</strong> Matriz dos autovetores (colunas)</li>
+            <li><strong>D:</strong> Matriz diagonal dos autovalores</li>
+            <li><strong>Potência de matriz:</strong> A<sup>k</sup> = PD<sup>k</sup>P<sup>-1</sup></li>
+            <li><strong>Matrizes não diagonalizáveis:</strong> Não possuem n autovetores LI</li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>6. TEOREMA ESPECTRAL</strong></h6>
+        <ul>
+            <li><strong>Matriz simétrica:</strong> Diagonalizável por matriz ortogonal</li>
+            <li><strong>Decomposição espectral:</strong> A = QΛQ<sup>T</sup></li>
+            <li><strong>Q:</strong> Matriz ortogonal (Q<sup>T</sup> = Q<sup>-1</sup>)</li>
+            <li><strong>Λ:</strong> Matriz diagonal dos autovalores</li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>7. APLICAÇÕES PRÁTICAS</strong></h6>
+        <ul>
+            <li><strong>Física:</strong> Vibrações, mecânica quântica, sistemas dinâmicos</li>
+            <li><strong>Estatística:</strong> PCA (Principal Component Analysis)</li>
+            <li><strong>Engenharia:</strong> Estabilidade de sistemas, dinâmica estrutural</li>
+            <li><strong>Ciência da computação:</strong> Algoritmos de busca, análise de redes</li>
+        </ul>
+    </div>
+</div>
                         
                         <div class="key-concept">
                             <h6><i class="fas fa-star me-2"></i>Conceito-Chave: Diagonalização</h6>
@@ -1322,14 +1766,109 @@
                 </div>
                 <div id="week7" class="collapse">
                     <div class="week-content">
-                        <div class="summary-box">
-                            <h5><i class="fas fa-sitemap me-2"></i>Resumo Esquemático</h5>
-                            <ul>
-                                <li><strong>Movimento no ℝ³:</strong> Vetores posição e deslocamento, subespaços, rotações</li>
-                                <li><strong>Reconstrução de Equações:</strong> Reta por 2 pontos, circunferência por 3 pontos, esfera por 4 pontos</li>
-                                <li><strong>Ferramentas:</strong> GeoGebra 3D, Python/Octave, aplicações em drones, robótica, astronomia</li>
-                            </ul>
-                        </div>
+
+
+
+                       <div class="summary-box">
+    <h5><i class="fas fa-sitemap me-2"></i>Resumo Esquemático Detalhado</h5>
+    
+    <div class="mb-3">
+        <h6><strong>1. MOVIMENTO NO ESPAÇO TRIDIMENSIONAL</strong></h6>
+        <ul>
+            <li><strong>Espaço vetorial ℝ³:</strong> Conjunto de vetores tridimensionais</li>
+            <li><strong>Vetor posição:</strong> p = [p<sub>x</sub> p<sub>y</sub> p<sub>z</sub>]<sup>T</sup></li>
+            <li><strong>Vetor deslocamento:</strong> v = [v<sub>x</sub> v<sub>y</sub> v<sub>z</sub>]<sup>T</sup></li>
+            <li><strong>Translação:</strong> p<sub>final</sub> = p<sub>inicial</sub> + v</li>
+            <li><strong>Subespaços:</strong> Planos (z = constante), retas, etc.</li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>2. TRANSFORMAÇÕES NO ESPAÇO 3D</strong></h6>
+        <ul>
+            <li><strong>Rotação em torno do eixo z:</strong>
+                <div class="matrix">R<sub>z</sub>(θ) = [cosθ -sinθ 0; sinθ cosθ 0; 0 0 1]</div>
+            </li>
+            <li><strong>Rotação em torno do eixo x:</strong>
+                <div class="matrix">R<sub>x</sub>(θ) = [1 0 0; 0 cosθ -sinθ; 0 sinθ cosθ]</div>
+            </li>
+            <li><strong>Rotação em torno do eixo y:</strong>
+                <div class="matrix">R<sub>y</sub>(θ) = [cosθ 0 sinθ; 0 1 0; -sinθ 0 cosθ]</div>
+            </li>
+            <li><strong>Composição de rotações:</strong> R = R<sub>z</sub>R<sub>y</sub>R<sub>x</sub> (ordem importante!)</li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>3. RECONSTRUÇÃO DE EQUAÇÕES GEOMÉTRICAS</strong></h6>
+        <ul>
+            <li><strong>Reta por 2 pontos:</strong>
+                <div class="matrix">
+                    |x  y  1|
+                    |x₁ y₁ 1| = 0
+                    |x₂ y₂ 1|
+                </div>
+            </li>
+            <li><strong>Circunferência por 3 pontos:</strong>
+                <div class="matrix">
+                    |x²+y² x  y  1|
+                    |x₁²+y₁² x₁ y₁ 1|
+                    |x₂²+y₂² x₂ y₂ 1| = 0
+                    |x₃²+y₃² x₃ y₃ 1|
+                </div>
+            </li>
+            <li><strong>Esfera por 4 pontos:</strong>
+                <div class="matrix">
+                    |x²+y²+z² x  y  z  1|
+                    |x₁²+y₁²+z₁² x₁ y₁ z₁ 1|
+                    |x₂²+y₂²+z₂² x₂ y₂ z₂ 1| = 0
+                    |x₃²+y₃²+z₃² x₃ y₃ z₃ 1|
+                    |x₄²+y₄²+z₄² x₄ y₄ z₄ 1|
+                </div>
+            </li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>4. SISTEMAS HOMOGÊNEOS E DETERMINANTES</strong></h6>
+        <ul>
+            <li><strong>Forma geral:</strong> A·c = 0</li>
+            <li><strong>Soluções não triviais:</strong> Existam quando det(A) = 0</li>
+            <li><strong>Aplicação:</strong> Encontrar equações de curvas/superfícies que passam por pontos conhecidos</li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>5. APLICAÇÕES EM DRONES E ROBÓTICA</strong></h6>
+        <ul>
+            <li><strong>Controle de trajetória:</strong> Vetores posição e deslocamento</li>
+            <li><strong>Navegação em subespaços:</strong> Movimento restrito a planos</li>
+            <li><strong>Rotações sucessivas:</strong> Composição de transformações</li>
+            <li><strong>Estabilidade:</strong> Análise usando autovalores</li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>6. FERRAMENTAS COMPUTACIONAIS</strong></h6>
+        <ul>
+            <li><strong>GeoGebra 3D:</strong> Visualização e manipulação de transformações</li>
+            <li><strong>MATLAB/Octave:</strong> Cálculo de rotações, sistemas lineares</li>
+            <li><strong>Python (SymPy):</strong> Manipulação simbólica de equações</li>
+            <li><strong>Visualização:</strong> Representação gráfica de movimentos 3D</li>
+        </ul>
+    </div>
+
+    <div class="mb-3">
+        <h6><strong>7. APLICAÇÕES INTERDISCIPLINARES</strong></h6>
+        <ul>
+            <li><strong>Robótica:</strong> Cinemática de manipuladores</li>
+            <li><strong>Astronomia:</strong> Determinação de órbitas</li>
+            <li><strong>Design gráfico:</strong> Modelagem 3D</li>
+            <li><strong>Engenharia civil:</strong> Análise estrutural</li>
+            <li><strong>Realidade virtual:</strong> Transformações de câmera</li>
+        </ul>
+    </div>
+</div>
                         
                         <div class="key-concept">
                             <h6><i class="fas fa-star me-2"></i>Conceito-Chave: Reconstrução de Equações</h6>
